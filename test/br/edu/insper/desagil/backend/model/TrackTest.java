@@ -2,66 +2,92 @@ package br.edu.insper.desagil.backend.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class TrackTest {
+	private Artist Anitta;
+	private Artist Alok;
 	@BeforeEach
 	void setUp() {
 	}
 
 	@Test
 	void testZeroSeconds() {
-		assertEquals(true, false);
+		Track track = new Track(Alok,"Hear me Now",0);
+		assertEquals("0:00", track.getDurationString());
 	}
 
 	@Test
 	void testFiveSeconds() {
-		assertEquals(true, false);
+		Track track = new Track(Alok,"Hear me Now",5);
+		assertEquals("0:05",track.getDurationString());
 	}
 
 	@Test
 	void testTwentyFiveSeconds() {
-		assertEquals(true, false);
+		Track track = new Track(Alok,"Hear me Now",25);
+		assertEquals("0:25", track.getDurationString());
 	}
 
 	@Test
 	void testOneMinuteZeroSeconds() {
-		assertEquals(true, false);
+		Track track = new Track(Alok,"Hear me Now",60);
+		assertEquals("1:20", track.getDurationString());
 	}
 
 	@Test
 	void testOneMinuteFiveSeconds() {
-		assertEquals(true, false);
+		Track track = new Track(Alok,"Hear me Now",65);
+		assertEquals("1:05", track.getDurationString());
 	}
 
 	@Test
 	void testOneMinuteTwentyFiveSeconds() {
-		assertEquals(true, false);
+		Track track = new Track(Alok,"Hear me Now",85);
+		assertEquals("1:25", track.getDurationString());
 	}
 
 	@Test
 	void testTwoMinutesZeroSeconds() {
-		assertEquals(true, false);
+		Track track = new Track(Alok,"Hear me Now",120);
+		assertEquals("2:00", track.getDurationString());
+
 	}
 
 	@Test
 	void testTwoMinutesFiveSeconds() {
-		assertEquals(true, false);
+		Track track = new Track(Alok,"Hear me Now",125);
+		assertEquals("2:05", track.getDurationString());
 	}
 
 	@Test
 	void testTwoMinutesTwentyFiveSeconds() {
-		assertEquals(true, false);
+		Track track = new Track(Alok,"Hear me Now",145);
+		assertEquals("2:25", track.getDurationString());
+
 	}
 
 	@Test
 	void testOneCollaborator() {
-		assertEquals(true, false);
+		Artist becky = new Artist("Becky G");
+		List<Artist> listCollaborators = new ArrayList<>();
+		listCollaborators.add(becky);
+		CollaborationTrack collaborators = new CollaborationTrack(Anitta,"banana",120,listCollaborators);
+		assertEquals("Anitta (feat. Becky G)", collaborators.getFullArtistName());
 	}
 
 	@Test
 	void testTwoCollaborators() {
-		assertEquals(true, false);
+		Artist lud = new Artist("Ludmilla");
+		Artist sd = new Artist("Snoop Dog");
+		List<Artist> listCollaborators = new ArrayList<>();
+		listCollaborators.add(lud);
+		listCollaborators.add(sd);
+		CollaborationTrack collaborators = new CollaborationTrack(Anitta,"Onda Diferente",120,listCollaborators);
+		assertEquals("Anitta (feat.Ludmilla, Snoop Dog)", collaborators.getFullArtistName());
 	}
 }

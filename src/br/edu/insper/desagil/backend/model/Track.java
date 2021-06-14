@@ -16,16 +16,32 @@ public class Track {
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public int getDuration() {
-		return duration;
+		return this.duration;
 	}
 	
-	//public String getDurationString() {
+	public String getDurationString() {
+		double minutesPerSixty = (double) this.duration/60;
+		int minutes = (int) minutesPerSixty;
+		double dec = minutesPerSixty - minutes;
+		int rest = 0;
 		
-	//}
+		if (dec > 0.001) {
+			rest =(int)dec*60;
+		}
+		String intStr = Integer.toString(rest);
+		String restStr;
+		restStr = "0" + Integer.toString(minutes);
+		return intStr + ":" + restStr;
+		
+	}
+	
+	public String getFullArtistName() {
+		return artist.getName();
+	}
 	
 	
 	

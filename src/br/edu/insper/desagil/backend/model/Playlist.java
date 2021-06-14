@@ -37,9 +37,32 @@ public class Playlist {
 		
 	}
 	
-	//public double averageRatings() {
+	public double averageRatings() {
+		double somaTotal = 0;
 		
-	//}
+		for (int rating: this.ratings.values()) {
+			somaTotal += rating;
+		}
+		double media = somaTotal/this.ratings.size();
+		int i = (int) media;
+		double mediaFracionaria = media - i;
+		if(mediaFracionaria < 0.26) {
+			mediaFracionaria = 0;
+		}
+		else if (mediaFracionaria >= 0.26 && mediaFracionaria <0.74) {
+			mediaFracionaria = 0.5;
+		}
+		else if (mediaFracionaria >= 0.74) {
+			mediaFracionaria = 1;
+		}
+		
+		return (double) i+mediaFracionaria;
+		
+		
+		
+
+		
+	}
 	
 	
 	
